@@ -5,8 +5,9 @@ import com.epam.borowa.presentation.spockwhy.mapper.BasicPersonMapperSpec
 import com.epam.borowa.presentation.spockwhy.mapper.BasicPersonMapperTest
 import com.epam.borowa.presentation.spockwhy.mapper.dto.Person
 import com.epam.borowa.presentation.spockwhy.mapper.entity.PersonEntity
+import spock.lang.Specification
 
-class Slide_4_Spec extends Slide {
+class Slide_4_Spec extends Specification {
 
     def "Simple example"() {
         given:
