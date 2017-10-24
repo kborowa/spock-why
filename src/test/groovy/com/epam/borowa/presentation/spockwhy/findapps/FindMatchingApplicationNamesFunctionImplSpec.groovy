@@ -3,13 +3,15 @@ package com.epam.borowa.presentation.spockwhy.findapps
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static com.epam.borowa.presentation.spockwhy.findapps.FindMatchingApplicationNamesFunction.*
+
 class FindMatchingApplicationNamesFunctionImplSpec extends Specification {
 
     @Unroll("#no should find apps with names #expectedApps when externalResource return: #externalResourceResult")
     def "should return matched application list"() {
         given:
-        def externalResourceMock = Mock(ExternalResource)
-        def function = new FindMatchingApplicationNamesFunction.FindMatchingApplicationNamesFunctionImpl(externalResourceMock)
+        def externalResourceMock = Stub(ExternalResource)
+        def function = new FindMatchingApplicationNamesFunctionImpl(externalResourceMock)
 
         and: 'stub definition'
         externalResourceMock.giveMeApplicationNameList() >> externalResourceResult
