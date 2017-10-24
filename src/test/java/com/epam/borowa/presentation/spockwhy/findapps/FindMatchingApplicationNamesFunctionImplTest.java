@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
 import static org.mockito.Mockito.when;
 
-import com.epam.borowa.presentation.spockwhy.findapps.FindMatchedApplicationsNamesFunction.FindMatchedApplicationsNamesFunctionImpl;
+import com.epam.borowa.presentation.spockwhy.findapps.FindMatchingApplicationNamesFunction.FindMatchingApplicationNamesFunctionImpl;
 import com.google.common.collect.Lists;
 import java.util.List;
 import org.junit.Before;
@@ -18,7 +18,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FindMatchedApplicationsNamesFunctionImplTest {
+public class FindMatchingApplicationNamesFunctionImplTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -26,11 +26,11 @@ public class FindMatchedApplicationsNamesFunctionImplTest {
     @Mock
     private ExternalResource externalResourceMock;
 
-    private FindMatchedApplicationsNamesFunction function;
+    private FindMatchingApplicationNamesFunction function;
 
     @Before
     public void setUp() throws Exception {
-        function = new FindMatchedApplicationsNamesFunctionImpl(externalResourceMock);
+        function = new FindMatchingApplicationNamesFunctionImpl(externalResourceMock);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class FindMatchedApplicationsNamesFunctionImplTest {
 
         when(externalResourceMock.giveMeApplicationNameList()).thenReturn(appsFromExternalResource);
 
-        final List<String> result = function.findApplicationsMatchedToName("expected-app-name");
+        final List<String> result = function.findApplicationsMatchingName("expected-app-name");
 
         assertThat(result, notNullValue());
         assertThat(result, contains("expected-app-name-BG-33333"));
@@ -50,7 +50,7 @@ public class FindMatchedApplicationsNamesFunctionImplTest {
     public void shouldReturnEmptyListWhenNoAppsInExternalResource() {
         when(externalResourceMock.giveMeApplicationNameList()).thenReturn(Lists.newArrayList());
 
-        final List<String> applications = function.findApplicationsMatchedToName("missing-app-name");
+        final List<String> applications = function.findApplicationsMatchingName("missing-app-name");
 
         assertThat(applications, notNullValue());
         assertThat(applications, empty());

@@ -15,7 +15,7 @@ class Slide_8_Spec extends Slide {
         result == easierToMaintain
         result == betterDocumentation
         result == increasedReadability
-        result == canBringsBusinessValue( ComplexDataDrivenSpec.class )
+        result == canBringBusinessValue( ComplexDataDrivenSpec.class )
     }
 
 
@@ -43,7 +43,7 @@ class Slide_8_Spec extends Slide {
 
 
 
-    def canBringsBusinessValue = {clazz -> return "DataDrivenTests"}
+    def canBringBusinessValue = {clazz -> return "DataDrivenTests"}
     def classToTest = "Class without tests"
     def useDataDrivenApproach = {problem -> return "DataDrivenTests"}
     def easierToMaintain = "DataDrivenTests"

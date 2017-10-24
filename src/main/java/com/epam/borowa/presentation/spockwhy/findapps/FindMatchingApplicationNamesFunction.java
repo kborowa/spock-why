@@ -6,15 +6,15 @@ import static java.util.stream.Collectors.toList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-interface FindMatchedApplicationsNamesFunction {
+interface FindMatchingApplicationNamesFunction {
 
-    List<String> findApplicationsMatchedToName(String appName);
+    List<String> findApplicationsMatchingName(String appName);
 
-    class FindMatchedApplicationsNamesFunctionImpl implements FindMatchedApplicationsNamesFunction {
+    class FindMatchingApplicationNamesFunctionImpl implements FindMatchingApplicationNamesFunction {
 
         private final ExternalResource externalResource;
 
-        public FindMatchedApplicationsNamesFunctionImpl(ExternalResource externalResource) {
+        public FindMatchingApplicationNamesFunctionImpl(ExternalResource externalResource) {
             this.externalResource = externalResource;
         }
 
@@ -24,7 +24,7 @@ interface FindMatchedApplicationsNamesFunction {
          * @return list of applications
          */
         @Override
-        public List<String> findApplicationsMatchedToName(String appName) {
+        public List<String> findApplicationsMatchingName(String appName) {
             checkArgument(isNotBlank(appName), "'appName' cannot be blank");
 
             final Pattern appNamePattern = Pattern.compile("^" + appName + "-BG-\\d+$");

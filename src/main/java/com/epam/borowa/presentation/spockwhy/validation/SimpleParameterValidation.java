@@ -13,13 +13,13 @@ public final class SimpleParameterValidation implements ParameterValidation {
     @Override
     public void makeSomethingUseful(String serviceName, Path jarFilePath, Path configFilePath,
                                     Path bundleTargetPath) {
-        checkArgument(!isNullOrEmpty(serviceName), "'serviceName' has to be defined.");
+        checkArgument(!isNullOrEmpty(serviceName), "'serviceName' has to be defined");
         requireNonNull(jarFilePath, "'jarFilePath' cannot be null");
         requireNonNull(configFilePath, "'configFilePath' cannot be null");
         requireNonNull(bundleTargetPath, "'bundleTargetPath' cannot be null");
-        checkArgument(Files.exists(jarFilePath), "'jarFilePath' does not exist.");
-        checkArgument(Files.isRegularFile(jarFilePath), "'jarFilePath' must be a path to file.");
-        checkArgument(Files.exists(configFilePath), "'configFilePath' does not exist.");
+        checkArgument(Files.exists(jarFilePath), "'jarFilePath' does not exist");
+        checkArgument(Files.isRegularFile(jarFilePath), "'jarFilePath' must be a path to file");
+        checkArgument(Files.exists(configFilePath), "'configFilePath' does not exist");
 
         someUsefulLogicHere();
     }

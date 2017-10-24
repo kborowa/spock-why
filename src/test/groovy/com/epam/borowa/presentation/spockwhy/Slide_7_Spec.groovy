@@ -1,20 +1,21 @@
 package com.epam.borowa.presentation.spockwhy
 
-import com.epam.borowa.presentation.spockwhy.findapps.FindMatchedApplicationsNamesFunctionImplSpec
 import com.epam.borowa.presentation.spockwhy.findapps.ExternalResource
-import com.epam.borowa.presentation.spockwhy.findapps.FindMatchedApplicationsNamesFunction
-import com.epam.borowa.presentation.spockwhy.findapps.FindMatchedApplicationsNamesFunctionImplTest
+import com.epam.borowa.presentation.spockwhy.findapps.FindMatchingApplicationNamesFunctionImplSpec
+import com.epam.borowa.presentation.spockwhy.findapps.FindMatchingApplicationNamesFunctionImplTest
+
+import static com.epam.borowa.presentation.spockwhy.findapps.FindMatchingApplicationNamesFunction.FindMatchingApplicationNamesFunctionImpl
 
 class Slide_7_Spec extends Slide {
 
-    def "find matching application"() {
+    def "find matching applications"() {
         given:
         def problem = {
-            def applicationsNames = retriveFromExternalResource
-            getOnlyApplicationMatchedToPattern( applicationsNames )
+            def applicationNames = retrieveFromExternalResource
+            getOnlyApplicationMatchingPattern( applicationNames )
         }
         def solution = {
-            new FindMatchedApplicationsNamesFunction.FindMatchedApplicationsNamesFunctionImpl(ExternalResource)
+            new FindMatchingApplicationNamesFunctionImpl(ExternalResource)
                     .findApplicationsMatchedToName('someName')
         }
 
@@ -23,8 +24,8 @@ class Slide_7_Spec extends Slide {
         def spockResult = createSpockTestFor solution
 
         then:
-        jUnitResult == FindMatchedApplicationsNamesFunctionImplTest.class
-        spockResult == FindMatchedApplicationsNamesFunctionImplSpec.class
+        jUnitResult == FindMatchingApplicationNamesFunctionImplTest.class
+        spockResult == FindMatchingApplicationNamesFunctionImplSpec.class
     }
 
 
@@ -51,10 +52,10 @@ class Slide_7_Spec extends Slide {
 
 
 
-    def getOnlyApplicationMatchedToPattern = {
+    def getOnlyApplicationMatchingPattern = {
         [*apps]
     }
-    def getRetriveFromExternalResource() {[]}
-    def createJUnitTestFor = { problem -> return FindMatchedApplicationsNamesFunctionImplTest.class}
-    def createSpockTestFor = { problem -> return FindMatchedApplicationsNamesFunctionImplSpec.class}
+    def getRetrieveFromExternalResource() {[]}
+    def createJUnitTestFor = { problem -> return FindMatchingApplicationNamesFunctionImplTest.class}
+    def createSpockTestFor = { problem -> return FindMatchingApplicationNamesFunctionImplSpec.class}
 }
