@@ -17,12 +17,8 @@ class BasicPersonMapperSpec extends Specification {
 
         then:
         def expectedResult = new Person(
-                name: 'testName1',
+                name: 'testName',
                 surname: 'testSurname')
         result == expectedResult
-    }
-
-    def "other test"() {
-
     }
 }
