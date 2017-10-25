@@ -14,6 +14,14 @@ class Slide_9_Spec extends Slide {
         questionsAndFeedback['feedback'] == give
     }
 
+    def "Tutorials"() {
+        urls = [
+                'https://www.youtube.com/watch?v=I1GENGpLpy8',
+                'http://spockframework.org/spock/docs/1.1/index.html',
+                'https://github.com/alien11689/spock-show'
+        ]
+    }
+
 
 
 
